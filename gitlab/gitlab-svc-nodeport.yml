@@ -5,10 +5,8 @@ metadata:
   namespace: gitlab
   labels:
     name: gitlab
-  annotations:
-    metallb.universe.tf/address-pool: production
 spec:
-  type: LoadBalancer  # Change to LoadBalancer to work with MetalLB
+  type: NodePort  # Change to LoadBalancer to work with MetalLB
   selector:
     name: gitlab
   ports:
@@ -18,4 +16,3 @@ spec:
     - name: http
       port: 80
       targetPort: http
-  loadBalancerIP: 172.16.1.236  # Assigning the static IP
